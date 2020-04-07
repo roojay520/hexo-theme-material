@@ -3,9 +3,7 @@
   "version": "1.5.6",
   "description": "Material Design Theme for Hexo",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "setup": "npm cache clean && npm install",
-    "lint": "npm run setup && bash lint.sh"
+    "lint": "bash lint.sh"
   },
   "repository": {
     "type": "git",
@@ -23,10 +21,14 @@
   },
   "homepage": "https://github.com/viosey/hexo-theme-material#readme",
   "devDependencies": {
+    "@types/hexo-util": "^0.6.2",
     "ejs-lint": "^0.2.0",
-    "eslint": "^3.14.0",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "sass-lint": "^1.10.2"
+  },
+  "dependencies": {
+    "hexo-util": "^1.9.0"
   }
 }

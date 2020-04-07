@@ -1,21 +1,21 @@
-'use strict';
 
-var path_for = require("./path_for");
-var get_file_hex = require("./get_file_hex");
-var fs = require('fs');
+const fs = require('fs');
+const { url_for } = require('hexo-util');
+const path_for = require('./path_for');
+const get_file_hex = require('./get_file_hex');
 
-function cssHelper() {
-  var result = '';
-  var path = '';
-  var key = ''
+function cssHelper(...args) {
+  let result = '';
+  let path = '';
+  let key = '';
 
-  for (var i = 0, len = arguments.length; i < len; i++) {
-    if (typeof arguments[i] === 'string'){
-      path = arguments[i];
+  for (let i = 0, len = args.length; i < len; i++) {
+    if (typeof args[i] === 'string') {
+      path = args[i];
       key = path;
-    }else{
-      path = arguments[i].path;
-      key = arguments[i].key
+    } else {
+      path = args[i].path;
+      key = args[i].key;
     }
 
     if (i) result += '\n';
@@ -24,15 +24,14 @@ function cssHelper() {
       result += jsHelper.apply(this, path);
     } else {
       if (path.indexOf('?') < 0 && path.substring(path.length - 4, path.length) !== '.css') path += '.css';
-      var localpath = path_for.call(this,path);
-      result += '<style id="' + key + '"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;' +
-        'window.lsLoadCSSMaxNums++;' +
-        'lsloader.load("' + key + '","' +
-        require("../../../../node_modules/hexo/lib/plugins/helper/url_for").call(this,path) + 
-        (fs.existsSync(localpath)?'?' + get_file_hex(localpath):'') + '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;' +
-        'window.lsLoadCSSNums++;' +
-        'if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";' +
-        '}, false)</script>'
+      const localpath = path_for.call(this, path);
+      result += `<style id="${key}"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;`
+        + 'window.lsLoadCSSMaxNums++;'
+        + `lsloader.load("${key}","${url_for.call(this, path)
+        }${fs.existsSync(localpath) ? `?${get_file_hex(localpath)}` : ''}",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;`
+        + 'window.lsLoadCSSNums++;'
+        + 'if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";'
+        + '}, false)</script>';
     }
   }
   return result;

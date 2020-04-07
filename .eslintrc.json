@@ -1,6 +1,68 @@
 {
-    "extends": "airbnb-base",
-    "plugins": [
-        "import"
-    ]
+  "root": true,
+  "extends": "airbnb-base",
+  "plugins": ["import"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jquery": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "defaultParams": true
+    }
+  },
+  "globals": {
+    "_": false
+  },
+  "rules": {
+    "indent": ["warn", 2],
+    "no-const-assign": "warn",
+    "no-extra-semi": "off",
+    "semi": "error",
+    "no-mixed-spaces-and-tabs": "off",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-use-before-define": "off",
+    "quotes": ["error", "single"],
+    "func-names": "off",
+    "camelcase": "off",
+    "complexity": "off",
+    "curly": "off",
+    "default-case": "warn",
+    "eqeqeq": "warn",
+    "guard-for-in": "warn",
+    "import/no-deprecated": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-internal-modules": "off",
+    "import/order": "off",
+    "max-len": "off",
+    "no-console": "warn",
+    "no-empty": "warn",
+    "no-invalid-this": "off",
+    "no-redeclare": "warn",
+    "no-shadow": "warn",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "warn",
+    "object-shorthand": "off",
+    "one-var": "off",
+    "radix": "warn",
+    "space-before-function-paren": ["off", "always"],
+    "space-in-parens": ["off", "always"],
+    "space-unary-ops": [
+      "error",
+      {
+        "words": true,
+        "nonwords": false
+      }
+    ],
+    "spaced-comment": "warn",
+    "valid-typeof": "off",
+    "no-plusplus": "off",
+    "global-require": "off"
+  }
 }
