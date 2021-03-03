@@ -267,11 +267,12 @@ search:
 
 # Analytics Systems
 # Available value:
-#     baidu | google | cnzz
+#     baidu | google | cnzz | cloudflare
 analytics:
     google_site_id: UA-110567426-1
     baidu_site_id:
     cnzz_site_id:
+    cloudflare_site_id: 3c5d25a147ce414e98e0de87bece8411
 
 # Leancloud Views
 leancloud:
